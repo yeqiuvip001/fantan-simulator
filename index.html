@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/fantan-simulator/assets/vite-fcbae64c.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>番摊模拟器 - 广东传统游戏概率模拟</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background: #0d1824;
+        color: white;
+      }
+      
+      #root {
+        min-height: 100vh;
+      }
+      
+      /* 加载动画 */
+      .loading {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, #1a2a3a 0%, #0d1824 100%);
+        z-index: 9999;
+        transition: opacity 0.5s;
+      }
+      
+      .loading.hidden {
+        opacity: 0;
+        pointer-events: none;
+      }
+      
+      .spinner {
+        width: 50px;
+        height: 50px;
+        border: 4px solid rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        border-top-color: #d4af37;
+        animation: spin 1s linear infinite;
+        margin-bottom: 20px;
+      }
+      
+      @keyframes spin {
+        to { transform: rotate(360deg); }
+      }
+    </style>
+    <script type="module" crossorigin src="/fantan-simulator/assets/index-fe2abaf9.js"></script>
+    <link rel="stylesheet" href="/fantan-simulator/assets/index-82e80907.css">
+  </head>
+  <body>
+    <div class="loading" id="loading">
+      <div class="spinner"></div>
+      <h2>加载番摊模拟器...</h2>
+      <p>广东传统游戏概率模拟系统</p>
+    </div>
+    
+    <div id="root"></div>
+    
+    <script>
+      // 页面加载完成后隐藏加载动画
+      window.addEventListener('load', function() {
+        setTimeout(function() {
+          const loading = document.getElementById('loading');
+          if (loading) {
+            loading.classList.add('hidden');
+            setTimeout(() => loading.style.display = 'none', 500);
+          }
+        }, 1000);
+      });
+    </script>
+    
+    <!-- 使用正确的相对路径 -->
+    
+  </body>
+</html>
